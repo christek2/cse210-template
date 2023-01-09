@@ -20,7 +20,6 @@ class Program
             if (number == userNum0)
             {
                 match = true;
-                
             }
             else if (number > 10)
             {
