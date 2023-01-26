@@ -4,8 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Prompt prompt1 = new Prompt();
-        prompt1.CompileList();
-        prompt1.DisplayRandom();
+        Entry entry1 = new Entry();
+        entry1.WriteNew();
     }
 }
