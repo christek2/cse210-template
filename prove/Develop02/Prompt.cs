@@ -24,11 +24,11 @@ public class Prompt
             Console.WriteLine(i);
         }
     }
-    public void DisplayRandom()
+    public string DisplayRandom()
     {
         Random randNum = new Random();
-        int num = randNum.Next(1, 6);
+        int num = randNum.Next(0, 5);
         string randPrompt = _promptBank[num];
-        Console.WriteLine(randPrompt);
+        return randPrompt;
     }
 }

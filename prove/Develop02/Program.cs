@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Entry entry1 = new Entry();
-        entry1.WriteNew();
+        Journal journal1 = new Journal();
+        journal1.DisplayAll();
     }
 }
