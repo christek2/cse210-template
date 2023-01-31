@@ -4,11 +4,12 @@ public class Entry
 {
     public string _entryPrompt = "";
     public string _entryDate = "";
+    public string _entryData;
 
-    public void WriteNew(string date, string prompt)
+    public Entry WriteNew(string date, string prompt)
     {
         string fileName = "Journal.txt";
-        using (StreamWriter outputFile = new StreamWriter(fileName, true))
+        using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             outputFile.WriteLine();
 
@@ -20,6 +21,13 @@ public class Entry
             outputFile.WriteLine(date);
             outputFile.WriteLine($"Prompt: {prompt}");
             outputFile.WriteLine($"> {newEntry}");
+
+            Entry entry1 = new Entry();
+            entry1._entryDate = date;
+            entry1._entryPrompt = prompt;
+            entry1._entryData = newEntry;
+
+            return entry1;
         }
     }
     public string GetDate()
@@ -27,7 +35,6 @@ public class Entry
         DateTime currentDate = DateTime.Now;
         string entryDate = currentDate.ToShortDateString();
         return entryDate;
-
     }
     public string GetPrompt()
     {

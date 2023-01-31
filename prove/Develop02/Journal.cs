@@ -2,8 +2,8 @@ using System;
 
 public class Journal
 {
-    public List<Entry> _userEntries = new List<Entry>();
-    public string fileName = "";
+    public List<string> _userEntries = new List<string>();
+    public string _fileName;
 
     public void DisplayAll()
     {
@@ -22,8 +22,15 @@ public class Journal
         string userFile = Console.ReadLine();
         return userFile;
     }
-    public void SaveEntry(List<Entry> entryList, Entry entry)
+    public void SaveEntry(Entry entry)
     {
-        entryList.Add(entry);
+        string fileName = "Journal.txt";
+        using (StreamWriter outputFile = new StreamWriter(fileName, true))
+        {
+            outputFile.WriteLine();
+            outputFile.WriteLine(entry._entryDate);
+            outputFile.WriteLine($"Prompt: {entry._entryPrompt}");
+            outputFile.WriteLine($"> {entry._entryData}");
+        }
     }
 }

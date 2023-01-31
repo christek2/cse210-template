@@ -1,0 +1,24 @@
+
+1/30/2023
+Prompt: This is D
+> Okay, hi D
+
+1/30/2023
+Prompt: This is C
+> 
+
+1/30/2023
+Prompt: This is B
+> Okay
+
+1/30/2023
+Prompt: This is A
+> blah blah blah
+
+1/30/2023
+Prompt: This is C
+> Hello C
+
+1/30/2023
+Prompt: This is C
+> Hello C, I'm sick and tired of seeing you on here
