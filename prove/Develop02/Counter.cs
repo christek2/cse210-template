@@ -74,6 +74,6 @@ public class Counter
     }
     public void DisplayCount(int streak, int goal)
     {
-        Console.WriteLine($"Current Goal: {streak}     Current Streak: {goal}");
+        Console.WriteLine($"Current Goal: {goal}     Current Streak: {streak}");
     }
 }
