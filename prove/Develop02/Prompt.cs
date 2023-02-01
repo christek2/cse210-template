@@ -2,11 +2,11 @@ using System;
 
 public class Prompt
 {
-    public string _promptA = "This is A";
-    public string _promptB = "This is B";
-    public string _promptC = "This is C";
-    public string _promptD = "This is D";
-    public string _promptE = "This is E";
+    public string _promptA = "What did you have for breakfast?";
+    public string _promptB = "What do you wish you could go back and do differently from today?";
+    public string _promptC = "What was the most interesting conversation you had today?";
+    public string _promptD = "Whis is one thing that you learned today?";
+    public string _promptE = "What's a goal you would like to set in your daily routine?";
     public List<string> _promptBank = new List<string>();
 
     public void CompileList()

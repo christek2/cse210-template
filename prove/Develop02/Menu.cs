@@ -2,7 +2,7 @@ using System;
 
 public class Menu
 {
-    public List<string> _menuOptions = new List<string>(){"1. Write New Entry", "2. Display Entries", "3. Save Entry", "4. Load File", "5. Quit Journal"};
+    public List<string> _menuOptions = new List<string>(){"1. Write New Entry", "2. Display Entries", "3. Save Entry", "4. Load File", "5. Edit Goal", "6. Quit Journal"};
     public string _userChoice;
     public bool _showMenu;
 
@@ -20,8 +20,7 @@ public class Menu
     }
     public bool UserToMenu(string input)
     {   
-        Entry entryData;
-
+        Entry entryData = new Entry();
         if (input == "1")
         {
             Entry entry1 = new Entry();
@@ -36,9 +35,10 @@ public class Menu
         }
         else if (input == "3")
         {   
-            
             Journal journal3 = new Journal();
-            journal3.SaveEntry(entryData);
+            journal3.SaveEntry(journal3._userEntries, entryData);
+            Console.WriteLine("Entry Saved");
+            Console.WriteLine();
             return true;
         }
         else if (input == "4")
@@ -49,6 +49,15 @@ public class Menu
             return true;
         }
         else if (input == "5")
+        {
+            Counter counter1 = new Counter();
+            Journal journal1 = new Journal();
+            string response = counter1.CompareStreakGoal(counter1.GetEntryCount(journal1._userEntries));
+            Console.WriteLine(response);
+            counter1.ResetUserGoal();
+            return true;
+        }
+        else if (input == "6")
         {
             Console.WriteLine("You have exited the journal.");
             return false;

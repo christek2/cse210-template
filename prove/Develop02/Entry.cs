@@ -8,8 +8,8 @@ public class Entry
 
     public Entry WriteNew(string date, string prompt)
     {
-        string fileName = "Journal.txt";
-        using (StreamWriter outputFile = new StreamWriter(fileName))
+        string fileName = "Journal.txt"; 
+        using (StreamWriter outputFile = new StreamWriter(fileName, true))
         {
             outputFile.WriteLine();
 

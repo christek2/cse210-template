@@ -2,7 +2,7 @@ using System;
 
 public class Journal
 {
-    public List<string> _userEntries = new List<string>();
+    public List<Entry> _userEntries = new List<Entry>();
     public string _fileName;
 
     public void DisplayAll()
@@ -22,15 +22,10 @@ public class Journal
         string userFile = Console.ReadLine();
         return userFile;
     }
-    public void SaveEntry(Entry entry)
+    public void SaveEntry(List<Entry> entryList, Entry entry)
     {
-        string fileName = "Journal.txt";
-        using (StreamWriter outputFile = new StreamWriter(fileName, true))
-        {
-            outputFile.WriteLine();
-            outputFile.WriteLine(entry._entryDate);
-            outputFile.WriteLine($"Prompt: {entry._entryPrompt}");
-            outputFile.WriteLine($"> {entry._entryData}");
-        }
+        Journal journal1 = new Journal();
+        entryList = journal1._userEntries;
+        entryList.Add(entry);
     }
 }
