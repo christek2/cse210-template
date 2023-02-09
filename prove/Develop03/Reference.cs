@@ -1,6 +1,7 @@
 using System;
 
-public class Reference{
+public class Reference
+{
     
     private string _book;
     private string _chapter;
@@ -10,5 +11,5 @@ public class Reference{
     public Reference(){}
     public Reference(int verse1, int verse2){}
 
-    public string GetReference(){}
+    public void GetReference(){}
 }
