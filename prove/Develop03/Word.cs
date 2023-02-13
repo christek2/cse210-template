@@ -19,11 +19,11 @@ public class Word
         int count = word.Length;
         return count;
     }
-    public bool IfHidden(bool hide, string oldWord)
+    public bool IfHidden(string word)
     {
-        if (hide == true)
+        string item = word.Substring(0,1);
+        if (item == "_")
         {
-            string newWord = ReplaceWord(oldWord);
             return true;
         }
         else
