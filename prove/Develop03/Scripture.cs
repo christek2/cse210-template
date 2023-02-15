@@ -5,7 +5,6 @@ public class Scripture
 
     private List<string> _scriptureWords = new List<string>();
     private string _scriptureText;
-    private Reference _scriptureReference;
 
     public Scripture()
     {}
@@ -34,63 +33,85 @@ public class Scripture
     {
         if (userChoice == "")
         {
-            int max = wordList.Count + 1;
+            int max = wordList.Count;
             Random randomNum = new Random();
-            int num1 = randomNum.Next(1, max);
-            int num2 = num1 + 1;
-            int num3 = num1 - 1;
-            if (num1 + 1 == max || num1 == max)
+            Word replaceWord = new Word();
+
+
+            int num1 = randomNum.Next(0, max);
+            bool hidden1 = true;
+            string test1;
+            while (hidden1 == true)
             {
-                num2 = num1 - 1;
-                num3 = num2 - 1;
-                
+                num1 = randomNum.Next(0, max);
+                test1 = wordList[num1];
+                hidden1 = replaceWord.IfHidden(test1);
             }
-            else if (num1 - 1 == 1 || num1 == 1)
+            
+            int num2 = randomNum.Next(0, max);
+            bool hidden2 = true;
+            string test2;
+            while (hidden2 == true && num2 == num1)
             {
-                num2 = num1 + 1;
-                num3 = num2 + 1;
+                num2 = randomNum.Next(0, max);
+                test2 = wordList[num2];
+                hidden2 = replaceWord.IfHidden(test2);
             }
 
-            num1 = num1 -1;
-            num2 = num2 -1;
-            num3 = num3 - 1;
-            max = max - 2;
-
+            int num3 = randomNum.Next(0, max);
+            bool hidden3 = true;
+            string test3;
+            while (hidden3 == true && (num3 == num2 || num3 == num1))
+            {
+                num3 = randomNum.Next(0, max);
+                test3 = wordList[num3];
+                hidden3 = replaceWord.IfHidden(test3);
+            }
+            
             string word1 = wordList[num1];
             string word2 = wordList[num2];
             string word3 = wordList[num3];
 
-            Word replaceWord = new Word();
             string replacementWord1 = replaceWord.ReplaceWord(word1);
             string replacementWord2 = replaceWord.ReplaceWord(word2);
             string replacementWord3 = replaceWord.ReplaceWord(word3);
 
-            if (replaceWord.IfHidden(word1) == false)
-            {
             wordList.RemoveAt(num1);
             wordList.Insert(num1, replacementWord1);
-            }
-            if (replaceWord.IfHidden(word2) == false)
-            {
+        
             wordList.RemoveAt(num2);
             wordList.Insert(num2, replacementWord2);
-            }
-            if (replaceWord.IfHidden(word3) == false)
-            {
+            
             wordList.RemoveAt(num3);
             wordList.Insert(num3, replacementWord3);
-            }
 
             string newScripture = string.Join(" ", wordList.ToArray());
             return newScripture;
         }
         else if (userChoice == "quit")
         {
-            return "Okay!";
+            return "";
         }
         else
         {
-            return $"Sorry, {userChoice} is not an acceptable answer, please type 'yes' or 'no'";
+            return $"Sorry, {userChoice} is not an acceptable answer";
         }
+    }
+    public bool ScriptHidden(string check)
+    {
+        bool hidden = true;
+        List<string> checkList = CompileList(check);
+        string checkString = string.Join("", checkList.ToArray());
+        foreach (char i in checkString)
+        {
+            string j = Char.ToString(i);
+            if (j != "_")
+            {
+                hidden = false;
+                break;
+            }
+        }
+
+        return hidden;
     }
 }
