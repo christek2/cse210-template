@@ -21,4 +21,12 @@ public class Activity
     {}
     public void PauseConsole()
     {}
+    public int GetUserTime()
+    {
+        return _userTime;
+    }
+    public void SetUserTime(int time)
+    {
+        _userTime = time;
+    }
 }

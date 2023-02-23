@@ -6,9 +6,13 @@ public class Breathe : Activity
     private string _message2;
 
     public Breathe()
-    {}
+    {
+        SetUserTime(30);
+    }
     public Breathe(int time)
-    {}
+    {
+        SetUserTime(time);
+    }
 
     public string GetMessage1()
     {
