@@ -8,6 +8,8 @@ public class Breathe : Activity
     public Breathe()
     {
         SetUserTime(30);
+        _message1 = "Breathe in...";
+        _message2 = "Breathe out...";
     }
     public Breathe(int time)
     {

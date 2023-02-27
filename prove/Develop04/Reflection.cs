@@ -3,35 +3,40 @@ using System;
 public class Reflection : Activity
 {
     private string _userPrompt;
+    private List<string> _promptList = new List<string>();
     private string _userQuestion;
+    private List<string> _questionList = new List<string>();
 
     public Reflection(string prompt)
-    {}
-    public Reflection(int time)
-    {}
-    public Reflection(string prompt, int time)
-    {}
+    {
+        SetUserTime(30);
+        _userPrompt = prompt;
+    }
+    public Reflection()
+    {
+        _promptList.Add("Think of a time when you did something really difficult.");
+        _promptList.Add("Think of a time when you helped someone in need.");
+        _promptList.Add("Think of a time when you did something truly selfless.");
 
-    public string GetPrompt()
-    {
-        return _userPrompt;
+        _questionList.Add("Why was this experience meaningful to you?");
+        _questionList.Add("How did you get started?");
+        _questionList.Add("What made this time different than other times when you were not successful?");
+        _questionList.Add("What could you learn from this experience that applies to other situations?");
+        _questionList.Add("How can you keep this experience in mind in the future?");
+        _questionList.Add("What is your favorite thing about this experience?");
+        _questionList.Add("How did feel when it was complete?");
     }
-    public void SetPrompt()
+    public Reflection(string prompt, int time)
     {
-        List<string> promptList = new List<string>();
-        promptList.Add("");
-        promptList.Add("");
-        promptList.Add("");
-        promptList.Add("");
-        promptList.Add("");
+        SetUserTime(time);
+        _userPrompt = prompt;
+    }
+    public override void SetPrompt(string prompt)
+    {
         Random rand = new Random();
-        int max = promptList.Count;
+        int max = _promptList.Count;
         int randIndex = rand.Next(0, max);
-        _userPrompt = promptList[randIndex];
-    }
-    public void DisplayPrompt()
-    {
-        Console.WriteLine(_userPrompt);
+        _userPrompt = _promptList[randIndex];
     }
     public string GetQuestion()
     {
@@ -39,16 +44,10 @@ public class Reflection : Activity
     }
     public void SetQuestion()
     {
-        List<string> questionList = new List<string>();
-        questionList.Add("");
-        questionList.Add("");
-        questionList.Add("");
-        questionList.Add("");
-        questionList.Add("");
         Random rand = new Random();
-        int max = questionList.Count;
+        int max = _questionList.Count;
         int randIndex = rand.Next(0, max);
-        _userQuestion = questionList[randIndex];
+        _userQuestion = _questionList[randIndex];
     }
     public void DisplayQuestion()
     {

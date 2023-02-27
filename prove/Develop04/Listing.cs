@@ -8,17 +8,8 @@ public class Listing : Activity
     {}
     public Listing(int time)
     {}
-
-    public string GetPrompt()
-    {
-        return _userPrompt;
-    }
-    public void SetPrompt(string prompt)
+    public override void SetPrompt(string prompt)
     {
         _userPrompt = prompt;
-    }
-    public void DisplayPrompt()
-    {
-        Console.WriteLine(_userPrompt);
     }
 }
