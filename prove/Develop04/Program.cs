@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menu menu = new Menu();
-        menu.DisplayOptions();
+        Activity activity = new Activity();
+        activity.ShowAnimation(300);
     }
 }

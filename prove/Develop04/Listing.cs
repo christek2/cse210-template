@@ -18,5 +18,7 @@ public class Listing : Activity
         _userPrompt = prompt;
     }
     public void DisplayPrompt()
-    {}
+    {
+        Console.WriteLine(_userPrompt);
+    }
 }
