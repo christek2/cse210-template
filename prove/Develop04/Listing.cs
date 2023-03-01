@@ -4,9 +4,9 @@ public class Listing : Activity
 {
     private string _userPrompt;
 
-    public Listing()
+    public Listing(string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {}
-    public Listing(int time)
+    public Listing(int time, string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {}
     public override void SetPrompt(string prompt)
     {

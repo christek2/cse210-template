@@ -5,15 +5,17 @@ public class Breathe : Activity
     private string _message1;
     private string _message2;
 
-    public Breathe()
+    public Breathe(string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
         SetUserTime(30);
         _message1 = "Breathe in...";
         _message2 = "Breathe out...";
     }
-    public Breathe(int time)
+    public Breathe(int time, string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
         SetUserTime(time);
+        _message1 = "Breathe in...";
+        _message2 = "Breathe out...";
     }
 
     public string GetMessage1()

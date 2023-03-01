@@ -7,13 +7,14 @@ public class Reflection : Activity
     private string _userQuestion;
     private List<string> _questionList = new List<string>();
 
-    public Reflection(string prompt)
+    public Reflection(string prompt, string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
         SetUserTime(30);
         _userPrompt = prompt;
     }
-    public Reflection()
+    public Reflection(string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
+        SetUserTime(30);
         _promptList.Add("Think of a time when you did something really difficult.");
         _promptList.Add("Think of a time when you helped someone in need.");
         _promptList.Add("Think of a time when you did something truly selfless.");
@@ -26,7 +27,7 @@ public class Reflection : Activity
         _questionList.Add("What is your favorite thing about this experience?");
         _questionList.Add("How did feel when it was complete?");
     }
-    public Reflection(string prompt, int time)
+    public Reflection(string prompt, int time, string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
         SetUserTime(time);
         _userPrompt = prompt;

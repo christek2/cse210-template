@@ -7,8 +7,11 @@ public class Activity
     private int _userTime;
     private string _userPrompt;
 
-    public Activity()
-    {}
+    public Activity(string startingMessage, string endingMessage)
+    {
+        _startingMessage = startingMessage;
+        _endingMessage = endingMessage;
+    }
 
     public string DisplayStartingMessage()
     {
@@ -20,6 +23,9 @@ public class Activity
     }
     public void ShowAnimation(int seconds)
     {
+        Console.Clear();
+        Console.WriteLine("Ready?");
+
         int miliseconds = seconds * 1000;
         int iteration = miliseconds / 4 / 5;
         int repeat = 1;
@@ -42,6 +48,8 @@ public class Activity
     }
     public int GetUserTime()
     {
+        Console.Write("For how many seconds would you like to do this activity? ");
+        _userTime = Console.Read();
         return _userTime;
     }
     public void SetUserTime(int time)
@@ -64,21 +72,24 @@ public class Activity
     }
     public void ExecuteBreathe()
     {
-        Breathe breathe = new Breathe();
-        breathe.DisplayStartingMessage();
+        Console.Clear();
+        DisplayStartingMessage();
+        Breathe breathe = new Breathe(GetUserTime(), _startingMessage, _endingMessage);
         ShowAnimation(3);
 
     }
     public void ExecuteReflection()
     {
-        Reflection reflect = new Reflection();
-        reflect.DisplayStartingMessage();
-        ShowAnimation(3);
+        // Console.Clear();
+        // Reflection reflect = new Reflection();
+        // reflect.DisplayStartingMessage();
+        // ShowAnimation(3);
     }
     public void ExecuteListing()
     {
-        Listing list = new Listing();
-        list.DisplayStartingMessage();
-        ShowAnimation(3);
+        // Console.Clear();
+        // Listing list = new Listing();
+        // list.DisplayStartingMessage();
+        // ShowAnimation(3);
     }
 }

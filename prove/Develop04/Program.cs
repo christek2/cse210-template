@@ -5,7 +5,9 @@ class Program
     static void Main(string[] args)
     {
         Menu menu = new Menu();
-        Activity act = new Activity();
+        int completedTime = 0;
+        string activity = "";
+        Activity act = new Activity($"Welcome to the {activity} activity. \n Relax, and follow the instructions. ", $"Well done! \n You have completed {completedTime} seconds of the {activity} activity.");
         int userNum = 0;
         while (userNum < 4)
         {
