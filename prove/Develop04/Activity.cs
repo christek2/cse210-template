@@ -13,19 +13,16 @@ public class Activity
         _endingMessage = endingMessage;
     }
 
-    public string DisplayStartingMessage()
+    public void DisplayStartingMessage()
     {
-        return _startingMessage;
+        Console.WriteLine(_startingMessage);
     }
-    public string DisplayEndingMessage()
+    public void DisplayEndingMessage()
     {
-        return _endingMessage;
+        Console.WriteLine(_endingMessage);
     }
     public void ShowAnimation(int seconds)
     {
-        Console.Clear();
-        Console.WriteLine("Ready?");
-
         int miliseconds = seconds * 1000;
         int iteration = miliseconds / 4 / 5;
         int repeat = 1;
@@ -48,17 +45,22 @@ public class Activity
     }
     public int GetUserTime()
     {
-        Console.Write("For how many seconds would you like to do this activity? ");
-        _userTime = Console.Read();
+        Console.Write("\nFor how many seconds would you like to do this activity? ");
+        string inputTime = Console.ReadLine();
+        _userTime = int.Parse(inputTime);
         return _userTime;
     }
-    public void SetUserTime(int time)
+    public void ConvertToMil(int time)
     {
         int timeProportion = time / 60;
         int timeInMils = timeProportion * 1000;
         _userTime = timeInMils;
     }
-    public string GetPrompt() 
+    public void SetUserTime(int time)
+    {
+        _userTime = time;
+    }
+    public string GetPrompt()
     {
         return _userPrompt;
     }
@@ -75,8 +77,13 @@ public class Activity
         Console.Clear();
         DisplayStartingMessage();
         Breathe breathe = new Breathe(GetUserTime(), _startingMessage, _endingMessage);
+        Console.Clear();
+        Console.WriteLine("Ready?");
         ShowAnimation(3);
-
+        breathe.LoopBreathe(_userTime);
+        _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Breathing activity.";
+        DisplayEndingMessage();
+        ShowAnimation(3);
     }
     public void ExecuteReflection()
     {

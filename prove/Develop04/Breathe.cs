@@ -42,4 +42,27 @@ public class Breathe : Activity
     {
         Console.WriteLine(_message2);
     }
+    public void LoopBreathe(int userTime)
+    {
+        
+        float splitTime = userTime / 3;
+        for (int i = 0; i < 3; i ++ )
+        {
+            DisplayMessage1(); 
+            for (int startTime = (int)Math.Round(splitTime) / 2; startTime > 0; startTime--)
+            {
+                Console.Write(startTime);
+                Thread.Sleep(1000);
+                Console.Write("\b\b");
+            }
+            
+            DisplayMessage2();
+            for (int startTime = (int)Math.Round(splitTime) / 2; startTime > 0; startTime--)
+            {
+                Console.Write(startTime);
+                Thread.Sleep(1000);
+                Console.Write("\b\b");
+            }
+        }
+    }
 }
