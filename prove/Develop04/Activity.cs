@@ -72,7 +72,7 @@ public class Activity
     {
         Console.WriteLine(prompt);
     }
-    public void ExecuteBreathe()
+    public int ExecuteBreathe()
     {
         Console.Clear();
         DisplayStartingMessage();
@@ -84,8 +84,9 @@ public class Activity
         _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Breathing activity.";
         DisplayEndingMessage();
         ShowAnimation(3);
+        return _userTime;
     }
-    public void ExecuteReflection()
+    public int ExecuteReflection()
     {
         Console.Clear();
         DisplayStartingMessage();
@@ -98,8 +99,9 @@ public class Activity
         _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Reflection activity.";
         DisplayEndingMessage();
         ShowAnimation(3);
+        return _userTime;
     }
-    public void ExecuteListing()
+    public int ExecuteListing()
     {
         Console.Clear();
         DisplayStartingMessage();
@@ -112,5 +114,6 @@ public class Activity
         _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Listing activity.";
         DisplayEndingMessage();
         ShowAnimation(3);
+        return _userTime;
     }
 }

@@ -14,7 +14,6 @@ public class Menu
 
     public void DisplayOptions()
     {
-        Console.Clear();
         foreach (string i in _options)
         {
             Console.WriteLine(i);
