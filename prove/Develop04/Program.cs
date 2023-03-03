@@ -7,6 +7,7 @@ class Program
         Menu menu = new Menu();
         int completedTime = 0;
         string activity = "";
+        string description = "";
         
         int userNum = 0;
         while (userNum < 4)
@@ -20,20 +21,22 @@ class Program
             if (userNum == 1)
             {
                 activity = "Breathing";
-                Activity act = new Activity($"Welcome to the {activity} activity. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");
+                description = "Focus on your breathing";
+                Activity act = new Activity($"Welcome to the {activity} activity. \n{description}. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");
                 act.ExecuteBreathe();
             }
             else if (userNum == 2)
             {
                 activity = "Reflecting";
-                Activity act = new Activity($"Welcome to the {activity} activity. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");                
+                description = "Take time to reflect on your life";
+                Activity act = new Activity($"Welcome to the {activity} activity. \n{description}. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");                
                 act.ExecuteReflection();
-                
             }
             else if (userNum == 3)
             {
                 activity = "Listing";
-                Activity act = new Activity($"Welcome to the {activity} activity. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");                
+                description = "Prepare to list as many things as you can according to the following prompt";
+                Activity act = new Activity($"Welcome to the {activity} activity. \n{description}. \n\nRelax, and follow the instructions.", $"Well done! \n\nYou have completed {completedTime} seconds of the {activity} activity.");                
                 act.ExecuteListing();
             }
         }

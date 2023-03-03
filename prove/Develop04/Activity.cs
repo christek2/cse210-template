@@ -60,7 +60,7 @@ public class Activity
     {
         _userTime = time;
     }
-    public string GetPrompt()
+    public virtual string GetPrompt()
     {
         return _userPrompt;
     }
@@ -87,16 +87,30 @@ public class Activity
     }
     public void ExecuteReflection()
     {
-        // Console.Clear();
-        // Reflection reflect = new Reflection();
-        // reflect.DisplayStartingMessage();
-        // ShowAnimation(3);
+        Console.Clear();
+        DisplayStartingMessage();
+        Reflection reflect = new Reflection(_startingMessage, _endingMessage);
+        int userTime = GetUserTime();
+        Console.Clear();
+        Console.WriteLine("Ready?");
+        ShowAnimation(3);
+        reflect.LaunchActivity(userTime);
+        _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Reflection activity.";
+        DisplayEndingMessage();
+        ShowAnimation(3);
     }
     public void ExecuteListing()
     {
-        // Console.Clear();
-        // Listing list = new Listing();
-        // list.DisplayStartingMessage();
-        // ShowAnimation(3);
+        Console.Clear();
+        DisplayStartingMessage();
+        Listing list = new Listing(_startingMessage, _endingMessage);
+        int userTime = GetUserTime();
+        Console.Clear();
+        Console.WriteLine("Ready?");
+        ShowAnimation(3);
+        list.LaunchListing(userTime);
+        _endingMessage = $"Well done! \n\nYou have completed {_userTime} seconds of the Listing activity.";
+        DisplayEndingMessage();
+        ShowAnimation(3);
     }
 }

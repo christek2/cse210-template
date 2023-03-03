@@ -15,9 +15,9 @@ public class Reflection : Activity
     public Reflection(string startingMessage, string endingMessage) : base (startingMessage, endingMessage)
     {
         SetUserTime(30);
-        _promptList.Add("Think of a time when you did something really difficult.");
-        _promptList.Add("Think of a time when you helped someone in need.");
-        _promptList.Add("Think of a time when you did something truly selfless.");
+        _promptList.Add("Think of a time when you did something really difficult");
+        _promptList.Add("Think of a time when you helped someone in need");
+        _promptList.Add("Think of a time when you did something truly selfless");
 
         _questionList.Add("Why was this experience meaningful to you?");
         _questionList.Add("How did you get started?");
@@ -31,6 +31,10 @@ public class Reflection : Activity
     {
         SetUserTime(time);
         _userPrompt = prompt;
+    }
+    public override string GetPrompt()
+    {
+        return _userPrompt;
     }
     public override void SetPrompt(string prompt)
     {
@@ -54,4 +58,61 @@ public class Reflection : Activity
     {
          Console.WriteLine(_userQuestion);
     }
+    public void LaunchActivity(int time)
+    {
+        SetPrompt(_userPrompt);
+        string prompt = GetPrompt();
+
+        Console.WriteLine("Consider the following:");
+        Console.WriteLine();
+        Console.WriteLine($"---{prompt}---");
+        Console.WriteLine();
+        
+        Console.WriteLine("Press enter to continue when ready ");
+        string userInput = Console.ReadLine();
+        while (userInput != "")
+        {
+            userInput = Console.ReadLine();
+        }
+
+        Console.WriteLine("Ponder on the following questions. \nYou may begin in: ");
+        for (int i = 5; i > 0; i--)
+            {
+                Console.Write("\b\b");
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b\b");
+            }
+
+        Console.Clear();
+        LoopQuestions(time);
+    }
+    private void LoopQuestions(int time)
+        {
+            float questionTime = time / 3;
+            int qTime = (int)Math.Round(questionTime);
+            SetQuestion();
+            string q1 = GetQuestion();
+            SetQuestion();
+            string q2 = GetQuestion();
+            while (q1 == q2)
+            {
+                SetQuestion();
+                q2 = GetQuestion();
+            }
+            SetQuestion();
+            string q3 = GetQuestion();
+            while (q3 == q2 || q3 == q2)
+            {
+                SetQuestion();
+                q3 = GetQuestion();
+            }
+
+            Console.WriteLine(q1);
+            ShowAnimation(qTime);
+            Console.WriteLine(q2);
+            ShowAnimation(qTime);
+            Console.WriteLine(q3);
+            ShowAnimation(qTime);
+        }
 }
