@@ -19,11 +19,9 @@ public class Simple : Goal
         Console.Write("How many points is this goal worth? ");
         string points = Console.ReadLine();
         int newPoints = int.Parse(points);
-        SetPoints(newPoints);
-
-        using (StreamWriter outputFile = new StreamWriter(fileName))
-        {
-            outputFile.WriteLine($"[] {GetName()}: {GetDescription()}; {GetPoints()} points");
-        }
+        Menu menu = new Menu();
+        menu.SetPoints(newPoints);
+        menu.SetGoal($"Simple Goal - [] {GetName()}: {GetDescription()}; {menu.GetPoints()} points");
+        menu.AddGoal(menu.GetGoal());
     }
 }

@@ -2,13 +2,10 @@ using System;
 
 public abstract class Goal
 {
-    private List<string> _goalTypes = new List<string>();
     private int _userSelection;
     private string _goalName;
     private string _goalDescription;
-    private int _goalPoints;
     private bool _completed;
-    private string _fileName;
 
     public Goal()
     {}
@@ -36,14 +33,6 @@ public abstract class Goal
     public string GetDescription()
     {
         return _goalDescription;
-    }
-    public void SetPoints(int points)
-    {
-        _goalPoints = points;
-    }
-    public int GetPoints()
-    {
-        return _goalPoints;
     }
     public abstract void Execute(string fileName);
 }
