@@ -22,10 +22,28 @@ public abstract class Goal
     public void LoadGoal()
     {}
     public void SetName(string name)
-    {}
+    {
+        _goalName = name;
+    }
+    public string GetName()
+    {
+        return _goalName;
+    }
     public void SetDescription(string description)
-    {}
+    {
+        _goalDescription = description;
+    }
+    public string GetDescription()
+    {
+        return _goalDescription;
+    }
     public void SetPoints(int points)
-    {}
-    public abstract void Execute();
+    {
+        _goalPoints = points;
+    }
+    public int GetPoints()
+    {
+        return _goalPoints;
+    }
+    public abstract void Execute(string fileName);
 }

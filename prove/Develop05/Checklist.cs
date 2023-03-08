@@ -12,7 +12,7 @@ public class Checklist : Goal
     {}
     public override void IsComplete() // type to bool
     {}
-    public override void Execute()
+    public override void Execute(string fileName)
     {}
     public void SetRepetitions(int repetitions)
     {}

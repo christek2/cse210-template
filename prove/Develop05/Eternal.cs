@@ -9,6 +9,6 @@ public class Eternal : Goal
     {}
     public override void IsComplete() // type to bool
     {}
-    public override void Execute()
+    public override void Execute(string fileName)
     {}
 }
