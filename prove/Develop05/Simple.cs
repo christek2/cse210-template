@@ -8,9 +8,9 @@ public class Simple : Goal
         SetType("Simple Goal");
     }
 
-    public override void Execute()
+    public override string Execute()
     {
-        GetInfo();
+        return GetInfo();
     }
     public override void SaveFile()
     {}

@@ -7,9 +7,9 @@ public class Eternal : Goal
         SetType("Eternal Goal");
     }
 
-    public override void Execute()
+    public override string Execute()
     {
-        GetInfo();
+        return GetInfo();
     }
     public override void SaveFile()
     {}

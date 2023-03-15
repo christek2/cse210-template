@@ -2,8 +2,10 @@ using System;
 
 public class Menu : Goal
 {
-    public override void Execute()
-    {}
+    public override string Execute()
+    {
+        return "something";
+    }
     public override void SaveFile()
     {}
     public override void RecordEvent()

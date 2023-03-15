@@ -10,15 +10,15 @@ public class Checklist : Goal
         SetType("Checklist Goal");
     }
 
-    public override void Execute()
+    public override string Execute()
     {
-        GetInfo();
+        return GetInfo();
     }
     public override void SaveFile()
     {}
     public override void RecordEvent()
     {}
-    public override void GetInfo()
+    public override string GetInfo()
     {
         Console.Write("What is the name of your goal? ");
         SetName(Console.ReadLine());
@@ -31,9 +31,9 @@ public class Checklist : Goal
         Console.Write("What is the bonus for completing all of the iterations? ");
         _bonus = Console.Read();
 
-        SetGoal(ToString(GetType(), GetName(), GetDescription(), GetPoints(), _iterations, _bonus));
+        return GoToString(GetType(), GetName(), GetDescription(), GetPoints(), _iterations, _bonus);
     }
-    public override string ToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
+    public override string GoToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
     {
         return $"[] {type}: {name}; {description}; {points}, {iterations} (Bonus: {bonus})";
     }
