@@ -9,7 +9,6 @@ public abstract class Goal
     private bool _isComplete;
     private List<string> _menu1 = new List<string>(){"1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit"};
     private List<string> _menu2 = new List<string>(){"1. Simple Goal", "2. Eternal Goal", "3. Checklist Goal"};
-    private string _fileName;
 
     public Goal()
     {}
@@ -71,28 +70,15 @@ public abstract class Goal
     {
         _goalPoints = points;
     }
-    public string GetFileName()
-    {
-        return _fileName;
-    }
-    public void SetFileName(string fileName)
-    {
-        _fileName = fileName;
-    }
     public abstract string Execute();
-    public abstract void SaveFile();
     public abstract void RecordEvent();
-    public void LoadFile(string fileName)
-    {
-        _fileName = fileName;
-    }
     public virtual bool IsComplete()
     {
         return _isComplete;
     }
     public virtual string GoToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
     {
-        return $"[] {type}: {name}; {description}; {points}";
+        return $"[] {type}: {name}; {description}; {points} points";
     }
     public virtual string GetInfo()
     {

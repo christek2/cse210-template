@@ -14,8 +14,6 @@ public class Checklist : Goal
     {
         return GetInfo();
     }
-    public override void SaveFile()
-    {}
     public override void RecordEvent()
     {}
     public override string GetInfo()
@@ -29,12 +27,12 @@ public class Checklist : Goal
         Console.Write("How many times would you like this goal to repeat? ");
         _iterations = int.Parse(Console.ReadLine());
         Console.Write("What is the bonus for completing all of the iterations? ");
-        _bonus = Console.Read();
+        _bonus = int.Parse(Console.ReadLine());
 
         return GoToString(GetType(), GetName(), GetDescription(), GetPoints(), _iterations, _bonus);
     }
     public override string GoToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
     {
-        return $"[] {type}: {name}; {description}; {points}, {iterations} (Bonus: {bonus})";
+        return $"[] {type}: {name}; {description}; {points} points; {iterations} times (Bonus: {bonus})";
     }
 }

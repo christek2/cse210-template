@@ -4,7 +4,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        PointTracker track = new PointTracker();
         Menu menu = new Menu();
 
         string userChoice = "0";
@@ -17,20 +16,16 @@ internal class Program
             switch (userChoice)
             {
                 case "1":
-                    track.AddToList(menu.ShowMenu2());
+                    menu.AddToList(menu.ShowMenu2());
                     break;
                 case "2":
-                    foreach (string goal in track.GetList())
-                    {
-                        Console.WriteLine(goal);
-                    }
-                    Console.WriteLine();
-                    Console.Write("--Press enter to continue--");
-                    Console.ReadLine();
+                    menu.DisplayGoals();
                     break;
                 case "3":
+                    menu.SaveFile(menu.GetList());
                     break;
                 case "4":
+                    menu.LoadFile();
                     break;
                 case "5":
                     break;

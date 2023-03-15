@@ -11,8 +11,6 @@ public class Eternal : Goal
     {
         return GetInfo();
     }
-    public override void SaveFile()
-    {}
     public override void RecordEvent()
     {}
 }
