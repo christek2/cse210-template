@@ -71,14 +71,14 @@ public abstract class Goal
         _goalPoints = points;
     }
     public abstract string Execute();
-    public abstract void RecordEvent();
+    public abstract void RecordEvent(string fileName);
     public virtual bool IsComplete()
     {
         return _isComplete;
     }
     public virtual string GoToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
     {
-        return $"[] {type}: {name}; {description}; {points} points";
+        return $"[ ] {type}: {name}; {description}; {points}p";
     }
     public virtual string GetInfo()
     {
@@ -90,5 +90,20 @@ public abstract class Goal
         SetPoints(int.Parse(Console.ReadLine()));
 
         return GoToString(GetType(), GetName(), GetDescription(), GetPoints());
+    }
+    public void EnterProgress(string fileName)
+    {
+        foreach (string i in _menu2)
+        {
+            Console.WriteLine(i);
+        }
+        Dictionary<string, Goal> progress = new Dictionary<string, Goal>();
+        progress["1"] = new Simple();
+        progress["2"] = new Eternal();
+        progress["3"] = new Checklist();
+
+        Console.Write("Enter the number for the type of goal you are reporting on: ");
+        string userReport = Console.ReadLine();
+        progress[userReport].RecordEvent(fileName);
     }
 }

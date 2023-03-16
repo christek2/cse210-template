@@ -28,6 +28,7 @@ internal class Program
                     menu.LoadFile();
                     break;
                 case "5":
+                    menu.EnterProgress(menu.GetFileName());
                     break;
                 case "6":
                     break;

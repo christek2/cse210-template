@@ -14,7 +14,7 @@ public class Checklist : Goal
     {
         return GetInfo();
     }
-    public override void RecordEvent()
+    public override void RecordEvent(string fileName)
     {}
     public override string GetInfo()
     {
@@ -33,6 +33,6 @@ public class Checklist : Goal
     }
     public override string GoToString(string type, string name, string description, int points, int iterations = 0, int bonus = 0)
     {
-        return $"[] {type}: {name}; {description}; {points} points; {iterations} times (Bonus: {bonus})";
+        return $"[ ] {type}: {name}; {description}; {points}p; {iterations}x (Bonus: {bonus})";
     }
 }

@@ -1,2 +1,4 @@
 You have 0 points
-[] Simple Goal: thing; thing; 5 points
+[ ] Simple Goal: Simpleton; Do something; 50p
+[ ] Eternal Goal: To Eternity and Beyond; Do something; 100p
+[ ] Checklist Goal: Check Baby Rec; Do somethinggggg; 20p; 2x (Bonus: 60)

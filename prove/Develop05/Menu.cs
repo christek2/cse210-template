@@ -45,7 +45,7 @@ public class Menu : Goal
             }
         }
     }
-    public override void RecordEvent()
+    public override void RecordEvent(string fileName)
     {}
     public string GetFileName()
     {
@@ -64,23 +64,24 @@ public class Menu : Goal
     }
     public void DisplayGoals()
     {
-        if (_fileName == "")
+        if (_fileName == "" && _goalList.Count() == 0)
         {
-            Console.WriteLine("No file loaded and no goals entered. Load a file or enter goals");
+            Console.WriteLine("No file loaded and no goals entered. Load a file or enter goals.");
             Thread.Sleep(3000);
         }
         else
         {
             if (_goalList.Count() == 0)
             {
-                // read from file
                 string[] lines = System.IO.File.ReadAllLines(_fileName);
                 Console.WriteLine($"From {_fileName}:");
-                Console.WriteLine();
 
                 foreach (string line in lines)
                 {
-                    Console.WriteLine(line);
+                    if (line.Substring(0, 1) != "Y")
+                    {
+                        Console.WriteLine(line);
+                    }
                 }
 
                 Console.WriteLine();
