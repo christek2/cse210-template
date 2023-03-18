@@ -9,13 +9,22 @@ public abstract class Goal
     private bool _isComplete;
     private List<string> _menu1 = new List<string>(){"1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit"};
     private List<string> _menu2 = new List<string>(){"1. Simple Goal", "2. Eternal Goal", "3. Checklist Goal"};
+    private int _totalPointsEarned;
+    private List<string> _goalList = new List<string>();
 
     public Goal()
     {}
 
+    public void SetPointsEarned(int points)
+    {
+        _totalPointsEarned = points;
+    }
+    public int GetPointsEarned()
+    {
+        return _totalPointsEarned;
+    }
     public void ShowMenu1()
     {
-        
         Console.Clear();
         foreach (string i in _menu1)
         {
@@ -36,7 +45,6 @@ public abstract class Goal
         Console.Write("Which goal would you like to create? ");
         string userChoice = Console.ReadLine();
         return goals[userChoice].Execute();
-
     }
     public string GetName()
     {
@@ -54,7 +62,7 @@ public abstract class Goal
     {
         _goalDescription = description;
     }
-    public string GetType()
+    public string GoGetType()
     {
         return _goalType;
     }
@@ -89,7 +97,7 @@ public abstract class Goal
         Console.Write("What is the amount of points associated with this goal? ");
         SetPoints(int.Parse(Console.ReadLine()));
 
-        return GoToString(GetType(), GetName(), GetDescription(), GetPoints());
+        return GoToString(GoGetType(), GetName(), GetDescription(), GetPoints());
     }
     public void EnterProgress(string fileName)
     {
@@ -105,5 +113,11 @@ public abstract class Goal
         Console.Write("Enter the number for the type of goal you are reporting on: ");
         string userReport = Console.ReadLine();
         progress[userReport].RecordEvent(fileName);
+    }
+    public int FindPoints(string goal)
+    {
+        string[] parts = goal.Split(";");
+        string pointsFromString = parts[2].Substring(1, parts[2].Count() - 2);
+        return int.Parse(pointsFromString);
     }
 }

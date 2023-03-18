@@ -5,7 +5,6 @@ public class Menu : Goal
 {
     private string _fileName;
     private List<string> _goalList = new List<string>();
-    private int _totalPointsEarned;
 
     public Menu()
     {
@@ -35,7 +34,7 @@ public class Menu : Goal
         {
             using (StreamWriter outputFile = new StreamWriter(_fileName))
             {
-                outputFile.WriteLine($"You have {_totalPointsEarned} points");
+                outputFile.WriteLine($"You have {GetPointsEarned} points");
                 foreach (string goal in goalList)
                 {
                     outputFile.WriteLine(goal);
@@ -57,10 +56,6 @@ public class Menu : Goal
         _fileName = Console.ReadLine();
         Console.WriteLine($"{_fileName} loaded.");
         Thread.Sleep(3000);
-    }
-    public int GetPointsEarned()
-    {
-        return _totalPointsEarned;
     }
     public void DisplayGoals()
     {

@@ -14,15 +14,33 @@ public class Simple : Goal
     }
     public override void RecordEvent(string fileName)
     {
+        List<string> newLines = new List<string>();
         string[] lines = System.IO.File.ReadAllLines(fileName);
-
+  
         foreach (string line in lines)
         {
+            newLines.Add(line);
             if (line.Substring(4, 1) == "S")
             {
-                Console.WriteLine(line);
-            }
+                int index = newLines.IndexOf(line);
+                newLines.Remove(line);
+                SetPointsEarned(GetPointsEarned() + FindPoints(line));
+                string newLine = line.Remove(1, 1);
+                newLine = newLine.Insert(1, "X");
+                newLines.Insert(index, newLine);
+            }   
         }
-        Thread.Sleep(3000);
+        
+        newLines.RemoveAt(0);
+        Menu menu = new Menu();
+                using (StreamWriter outputFile = new StreamWriter(fileName))
+                {
+                    int newPoints = GetPointsEarned();
+                    outputFile.WriteLine($"You have {newPoints} points");
+                    foreach (string goal in newLines)
+                    {
+                        outputFile.WriteLine(goal);
+                    }
+                }
     }
 }
