@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 public abstract class Goal
 {
@@ -11,10 +12,28 @@ public abstract class Goal
     private List<string> _menu2 = new List<string>(){"1. Simple Goal", "2. Eternal Goal", "3. Checklist Goal"};
     private int _totalPointsEarned;
     private List<string> _goalList = new List<string>();
+    private int _timesComplete;
+    private int _timesToComplete;
 
     public Goal()
     {}
 
+    public int GetTimesToComplete()
+    {
+        return _timesToComplete;
+    }
+    public void SetTimesToComplete(int times)
+    {
+        _timesToComplete = times;
+    }
+    public int GetTimesComplete()
+    {
+        return _timesComplete;
+    }
+    public void SetTimesComplete(int times)
+    {
+        _timesComplete = times;
+    }
     public void SetPointsEarned(int points)
     {
         _totalPointsEarned = points;

@@ -24,7 +24,10 @@ public class Simple : Goal
             {
                 int index = newLines.IndexOf(line);
                 newLines.Remove(line);
-                SetPointsEarned(GetPointsEarned() + FindPoints(line));
+                string[] loadedLines = System.IO.File.ReadAllLines(fileName);
+                string[] parts = loadedLines[0].Split(" ");
+                int loadedPoints = int.Parse(parts[2]);
+                SetPointsEarned(loadedPoints + FindPoints(line));
                 string newLine = line.Remove(1, 1);
                 newLine = newLine.Insert(1, "X");
                 newLines.Insert(index, newLine);
@@ -42,5 +45,8 @@ public class Simple : Goal
                         outputFile.WriteLine(goal);
                     }
                 }
+
+        Console.WriteLine("Simple goal completed!");
+        Thread.Sleep(3000);
     }
 }

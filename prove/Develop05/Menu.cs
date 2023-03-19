@@ -9,6 +9,7 @@ public class Menu : Goal
     public Menu()
     {
         _fileName = "";
+        SetTimesComplete(0);
     }
 
     public List<string> GetList()
