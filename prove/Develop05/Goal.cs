@@ -45,6 +45,8 @@ public abstract class Goal
     public void ShowMenu1()
     {
         Console.Clear();
+        Console.WriteLine($"You have {_totalPointsEarned} points.");
+        Console.WriteLine();
         foreach (string i in _menu1)
         {
             Console.WriteLine(i);
