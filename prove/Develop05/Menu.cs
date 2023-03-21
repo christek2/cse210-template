@@ -35,7 +35,8 @@ public class Menu : Goal
         {
             using (StreamWriter outputFile = new StreamWriter(_fileName))
             {
-                outputFile.WriteLine($"You have {GetPointsEarned} points");
+                int points = GetPointsEarned();
+                outputFile.WriteLine($"You have {points} points");
                 foreach (string goal in goalList)
                 {
                     outputFile.WriteLine(goal);
