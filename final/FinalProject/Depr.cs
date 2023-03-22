@@ -1,11 +1,10 @@
 using System;
 
-public class Depr
+public class Depr : Menu
 {
     private int _usefulLife;
     private int _initialCost;
     private int _salvageValue;
-    private List<string> _possessedAssets = new List<string>();
     private string _assetName;
     private string _assetDescription;
     private string _dateOfPurchase;
