@@ -43,7 +43,7 @@ public class Menu
             case 4:
                 // ShowAnimation();
                 break;
-            case 5:
+            case > 4 or < 1:
                 Console.WriteLine("Seletion not available; please enter an option from the list above. ");
                 ShowAnimation();
                 DisplayManageOptions();
@@ -72,6 +72,7 @@ public class Menu
             Console.WriteLine("There are no assets saved.");
         }
         Console.WriteLine();
+        Console.WriteLine();
         Console.Write("Enter 'M' to Manage Assets ");
         string userInput = Console.ReadLine();
         
@@ -83,6 +84,21 @@ public class Menu
     }
     public void ShowAnimation()
     {
-        Thread.Sleep(3000);
+        // Thread.Sleep(3000);
+        for (int i = 4; i > 0; i--)
+        {
+            Console.Write("-");
+            Thread.Sleep(250);
+            Console.Write("\b\b");
+            Console.Write(">");
+            Thread.Sleep(250);
+            Console.Write("\b\b");
+            Console.Write("-");
+            Thread.Sleep(250);
+            Console.Write("\b\b");
+            Console.Write("<");
+            Thread.Sleep(250);
+            Console.Write("\b\b");
+        }
     }
 }
