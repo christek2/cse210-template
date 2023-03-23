@@ -15,7 +15,7 @@ public class Menu
         _options.Add("3. Edit Existing Asset's Information");
         _options.Add("4. Back");
     }
-
+    
     public void DisplayManageOptions()
     {
         Console.Clear();

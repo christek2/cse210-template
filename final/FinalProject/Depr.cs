@@ -3,10 +3,11 @@ using System;
 public class Depr : Menu
 {
     private int _usefulLife;
-    private int _initialCost;
-    private int _salvageValue;
+    private double _initialCost;
+    private double _salvageValue;
     private string _assetName;
     private string _assetDescription;
+    private string _assetDeprType;
     private string _dateOfPurchase;
     private string _estRetDate;
 
@@ -21,19 +22,19 @@ public class Depr : Menu
     {
         _usefulLife = life;
     }
-    public int GetInitialCost()
+    public double GetInitialCost()
     {
         return _initialCost;
     }
-    public void SetInititalCost(int cost)
+    public void SetInititalCost(double cost)
     {
         _initialCost = cost;
     }
-    public int GetSalvage()
+    public double GetSalvage()
     {
         return _salvageValue;
     }
-    public void SetSalvage(int salvage)
+    public void SetSalvage(double salvage)
     {
         _salvageValue = salvage;
     }
@@ -44,6 +45,14 @@ public class Depr : Menu
     public void SetAssetName(string name)
     {
         _assetName = name;
+    }
+    public string GetAssetType()
+    {
+        return _assetDeprType;
+    }
+    public void SetAssetType(string deprType)
+    {
+        _assetDeprType = deprType;
     }
     public string GetAssetDesc()
     {

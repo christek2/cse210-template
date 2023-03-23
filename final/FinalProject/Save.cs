@@ -5,6 +5,6 @@ public class Save
     public Save()
     {}
 
-    public void SaveToFile()
+    public void SaveToFile(string fileName)
     {}
 }
