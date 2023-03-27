@@ -59,12 +59,11 @@ public class Menu
         string[] assets = System.IO.File.ReadAllLines(_fileName);
         if (assets.Count() != 0)
         {
-            Console.WriteLine("Depreciable Assets: ");
+            Console.WriteLine("Asset Name:                   Dep This Year:                Retirement:");
             Console.WriteLine();
             foreach (string asset in assets)
             {
                 string[] parts = asset.Split("; ");
-                Console.Write(parts[1]);
                 double depr = 0;
                 if (parts[0] == "StraightLine")
                 {
@@ -73,9 +72,15 @@ public class Menu
                 }
                 else if (parts[1] == "DoubleDeclining")
                 {
-                    
+                    DDec doub = new DDec();
+                    depr = doub.CalcDepr(0.4, double.Parse(parts[6]), double.Parse(parts[4]) - double.Parse(parts[5]), 500000, 87/360);
                 }
-                Console.WriteLine($"     Depreciation This Year: {depr}");
+                SLine test = new SLine();
+                string date = test.GenerateRetDate(parts[3], double.Parse(parts[6]));
+                string space1 = test.InsertSpace(parts[1], 30);
+                string line = $"{parts[1]}{space1}{depr}";
+                string space2 = test.InsertSpace(line, 60);
+                Console.WriteLine($"{line}{space2}{date}");
             }
         }
         else
@@ -84,6 +89,8 @@ public class Menu
         }
         Console.WriteLine();
         Console.WriteLine();
+        SLine coiso = new SLine();
+        coiso.InsertSpace("Thing", 10);
         Console.Write("Enter 'M' to Manage Assets (press Enter to exit the program) ");
         string userInput = Console.ReadLine();
         

@@ -85,4 +85,19 @@ public abstract class Depr : Menu
         double life = int.Parse(parts[2]) + usefulLife;
         return $"{parts[0]}/{parts[1]}/{life}";
     }
+    // public double CalcRate()
+    // {}
+    // public double CalcPortion()
+    // {}
+    public string InsertSpace(string embeddedString, int length)
+    {
+        int toFillUp = length - embeddedString.Length;
+        string newSpace = " ";
+        for (int i = 0; i < toFillUp - 1; i++)
+        {
+            newSpace = $"{newSpace} ";
+        }
+
+        return newSpace;
+    }
 }
