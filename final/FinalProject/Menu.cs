@@ -49,7 +49,6 @@ public class Menu
                 DisplayManageOptions();
                 break;
         }
-        DisplayInterface();
     }
     public string DisplayInterface()
     {
@@ -64,7 +63,19 @@ public class Menu
             Console.WriteLine();
             foreach (string asset in assets)
             {
-                Console.WriteLine(asset);
+                string[] parts = asset.Split("; ");
+                Console.Write(parts[1]);
+                double depr = 0;
+                if (parts[0] == "StraightLine")
+                {
+                    SLine straight = new SLine();
+                    depr = straight.CalcDepr(0, double.Parse(parts[6]), double.Parse(parts[4]) - double.Parse(parts[5]), 0);
+                }
+                else if (parts[1] == "DoubleDeclining")
+                {
+                    
+                }
+                Console.WriteLine($"     Depreciation This Year: {depr}");
             }
         }
         else
@@ -73,7 +84,7 @@ public class Menu
         }
         Console.WriteLine();
         Console.WriteLine();
-        Console.Write("Enter 'M' to Manage Assets ");
+        Console.Write("Enter 'M' to Manage Assets (press Enter to exit the program) ");
         string userInput = Console.ReadLine();
         
         if (userInput == "M" || userInput == "m")

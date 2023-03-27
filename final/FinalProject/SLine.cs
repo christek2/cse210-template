@@ -15,6 +15,8 @@ public class SLine : Depr
     {
         _slRate = rate;
     }
-    public override void CalcDepr()
-    {}
+    public override double CalcDepr(double rate, double usefulLife, double depreciableCost, double curBV, double portionOfYear=1)
+    {
+        return Math.Round((depreciableCost / usefulLife) * portionOfYear, 2);
+    }
 }

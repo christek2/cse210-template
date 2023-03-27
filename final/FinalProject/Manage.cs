@@ -11,6 +11,10 @@ public class Manage : Depr
         _fileName = "AssetSheet.txt";
     }
 
+    public override double CalcDepr(double rate, double usefulLife, double depreciableCost, double curBV, double portionOfYear=1)
+    {
+        return 0;
+    }
     public void AddAssets()
     {
         Console.Clear();
@@ -27,6 +31,17 @@ public class Manage : Depr
         double cost = double.Parse(Console.ReadLine());
         Console.Write("What is the expected salvage value of the asset (exclude symbols and commas)? ");
         double salvage = double.Parse(Console.ReadLine());
+        Console.Write("What is the useful life of this asset? ");
+        double usefulLife = double.Parse(Console.ReadLine());
+        double unitsPerYear = 0;
+        double totalUnits = 0;
+        if (deprMethod == 3)
+        {
+            Console.Write("How many units will be produced every year? ");
+            unitsPerYear = double.Parse(Console.ReadLine());
+            Console.Write("How many units will be produced in total? ");
+            totalUnits = double.Parse(Console.ReadLine());
+        }
 
         string method = "";
         switch (deprMethod)
@@ -48,6 +63,7 @@ public class Manage : Depr
         SetDateofPurchase(date);
         SetInititalCost(cost);
         SetSalvage(salvage);
+        SetUsefulLife(usefulLife);
 
         Console.WriteLine();
         Console.Write("Is this information correct (yes/no)? ");
@@ -55,7 +71,8 @@ public class Manage : Depr
 
         if (userInput == "yes")
         {
-            string newAsset = $"{method}; {name}; {desc}; {date}; {cost}; {salvage}";
+
+            string newAsset = $"{method}; {name}; {desc}; {date}; {cost}; {salvage}; {usefulLife}";
             PrintToSheet(_fileName, newAsset);
             Console.WriteLine($"Saving ");
             ShowAnimation();
@@ -87,44 +104,49 @@ public class Manage : Depr
         int index = 1;
         foreach (string i in assets)
         {
-            Console.WriteLine($"{index}. {i}");
+            string[] parts = i.Split("; ");
+            Console.WriteLine($"{index}. {parts[1]}");
             index = index + 1;
         }
+        Console.WriteLine($"{index}. Back");
         Console.WriteLine();
         Console.Write("Enter the number of the asset you would like to delete: ");
         int userInput = int.Parse(Console.ReadLine());
 
-        Console.Clear();
-        Console.WriteLine(assets[userInput - 1]);
-        Console.WriteLine();
-        Console.Write("Is this the item you would like to delete (yes/no)? ");
-        string userInput2 = Console.ReadLine();
+        if (userInput != index)
+        {
+            Console.Clear();
+            Console.WriteLine(assets[userInput - 1]);
+            Console.WriteLine();
+            Console.Write("Is this the item you would like to delete (yes/no)? ");
+            string userInput2 = Console.ReadLine();
 
-        if (userInput2 == "yes")
-        {
-            List<string> revisedAssets = new List<string>();
-            foreach (string i in assets)
+            if (userInput2 == "yes")
             {
-                revisedAssets.Add(i);
-            }
-            revisedAssets.RemoveAt(userInput - 1);
-            using (StreamWriter file = new StreamWriter(_fileName))
-            {
-                foreach (string i in revisedAssets)
+                List<string> revisedAssets = new List<string>();
+                foreach (string i in assets)
                 {
-                    file.WriteLine(i);
+                    revisedAssets.Add(i);
                 }
+                revisedAssets.RemoveAt(userInput - 1);
+                using (StreamWriter file = new StreamWriter(_fileName))
+                {
+                    foreach (string i in revisedAssets)
+                    {
+                        file.WriteLine(i);
+                    }
+                }
+                Console.Write("Removing ");
+                ShowAnimation();
             }
-            Console.WriteLine("Removing ");
-            ShowAnimation();
-        }
-        else if (userInput2 == "no")
-        {
-            RemoveAssets();
-        }
-        else
-        {
-            DisplayManageOptions();
+            else if (userInput2 == "no")
+            {
+                RemoveAssets();
+            }
+            else
+            {
+                DisplayManageOptions();
+            }
         }
     }
     public void EditAssets()
@@ -141,7 +163,7 @@ public class Manage : Depr
     {
         return _fileName;
     }
-    public void SetProdLimit(string fileName)
+    public void SetFileName(string fileName)
     {
         _fileName = fileName;
     }

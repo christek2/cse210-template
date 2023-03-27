@@ -1,3 +1,3 @@
-thing 
-thing2 
-StraightLine; thing3; the thing with which i shall thing until my thinging days are over; 03/23/2023; 500000; 100000
+StraightLine; Office Equipment; Equipment used in the office every day; 03/27/2023; 400000; 50000
+StraightLine; Warehouse Equipment; Equipment to be used in the warehouse; 03/27/2023; 300000; 20000
+DoubleDeclining; Truck; Delivery vehicle; 03/27/2023; 50000; 5000

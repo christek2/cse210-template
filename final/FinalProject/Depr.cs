@@ -1,8 +1,8 @@
 using System;
 
-public class Depr : Menu
+public abstract class Depr : Menu
 {
-    private int _usefulLife;
+    private double _usefulLife;
     private double _initialCost;
     private double _salvageValue;
     private string _assetName;
@@ -14,11 +14,11 @@ public class Depr : Menu
     public Depr()
     {}
 
-    public int GetUsefulLife()
+    public double GetUsefulLife()
     {
         return _usefulLife;
     }
-    public void SetUsefulLife(int life)
+    public void SetUsefulLife(double life)
     {
         _usefulLife = life;
     }
@@ -74,10 +74,15 @@ public class Depr : Menu
     {
         return _estRetDate;
     }
-    public void GenerateDateOfRetirment()
+    public void SetDateOfRetirment()
     {
         // _estRetDate = 
     }
-    public virtual void CalcDepr()
-    {}
+    public abstract double CalcDepr(double rate, double usefulLife, double depreciableCost, double curBV, double portionOfYear=1);
+    public string GenerateRetDate(string dateOfPurchase, double usefulLife)
+    {
+        string[] parts = dateOfPurchase.Split("/");
+        double life = int.Parse(parts[2]) + usefulLife;
+        return $"{parts[0]}/{parts[1]}/{life}";
+    }
 }
