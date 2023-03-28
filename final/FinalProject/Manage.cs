@@ -136,7 +136,7 @@ public class Manage : Depr
                         file.WriteLine(i);
                     }
                 }
-                Console.Write("Removing ");
+                Console.WriteLine("Removing ");
                 ShowAnimation();
             }
             else if (userInput2 == "no")

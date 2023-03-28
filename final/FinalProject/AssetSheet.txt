@@ -1,3 +1,4 @@
 StraightLine; Office Equipment; Equipment used in the office every day; 03/27/2023; 400000; 50000; 5
 StraightLine; Warehouse Equipment; Equipment to be used in the warehouse; 03/27/2023; 300000; 20000; 7
-DoubleDeclining; Truck; Delivery vehicle; 03/27/2023; 50000; 5000; 10
+StraightLine; Office Furniture; Furnishings to be used around the office for the next few years; 03/28/2023; 60000; 12000; 3
+DoubleDeclining; Truck; Delivery vehicle; 03/28/2023; 50000; 5000; 10

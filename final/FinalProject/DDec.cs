@@ -17,6 +17,6 @@ public class DDec : Depr
     }
     public override double CalcDepr(double rate, double usefulLife, double depreciableCost, double curBV, double portionOfYear=1)
     {
-        return Math.Round(curBV * rate * portionOfYear);
+        return Math.Round(curBV * rate * portionOfYear, 2);
     }
 }
